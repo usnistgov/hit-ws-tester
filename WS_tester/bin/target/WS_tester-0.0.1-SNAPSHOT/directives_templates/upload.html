@@ -1,0 +1,43 @@
+<section class="container1" >
+	<form class="form">
+	<fieldset>
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-2 col-md-offset-1" >Resource Name</label>
+			<div class="col-md-4 col-md-offset-1">
+				<input ng-model="upload.name" class="form-control" type="text"/>
+			</div>
+		</div>
+		<div class="control-group col-md-12">
+			<label class="control-label col-md-2 col-md-offset-1" >Resource Type</label>
+			<div class="controls col-md-4 col-md-offset-1">
+				<label class="radio inline" for="radios-0">
+					<input ng-model="upload.type" name="radios" id="radios-0" value="Table" checked="checked" type="radio">
+					Table
+				</label>
+				<label class="radio inline" for="radios-1">
+					<input ng-model="upload.type" name="radios" id="radios-1" value="Profile" type="radio">
+					Profile
+				</label>
+			</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-2 col-md-offset-1" >Resource File</label>
+			<div class="controls">
+					<div class="col-md-3 col-md-offset-1" >
+						<input class="form-control" disabled="disabled" ng-model="upload.filename"/>
+					</div>
+					<div class="btn btn-primary col-md-1">
+					    <span>Browse</span>
+					    <input type="file" id="up2" class="upload" onchange="angular.element(this).scope().selected(this.files)"/>
+					</div>
+			</div>
+			<div class="col-md-12" style="margin-top : 10px;" ng-show="upload.notXML">
+					<p class="col-md-offset-5" style="color : red;"> File must be XML </p>
+ 			</div>
+		</div>
+	</fieldset>
+	</form>
+</section>
+<div class="form-group col-md-12" style="margin-top : 20px;" ng-show="upload.showUp()">
+	<button ng-click="upload.up()" class="btn btn-warning col-md-offset-4 col-md-4">Upload</button>
+</div>

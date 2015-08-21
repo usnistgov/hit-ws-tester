@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/bootstrap-filestyle/src/bootstrap-filestyle.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/js-unzip.js"></script>
+	<script src="https://raw.githubusercontent.com/augustl/js-inflate/master/js-inflate.js"></script>
+	<script src="bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="custom/style.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/angular-tooltips/dist/angular-tooltips.min.css">
+	<title>NIST HL7 V2 Validation Client</title>
+</head>
+<body ng-app="validator" ng-controller="GeneralController as gc">
+	<section class="" >
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+  			<div class="container">
+  				<a class="navbar-brand" href="#">
+  					NIST HL7 V2 Validation Client
+  				</a>
+  			</div>
+		</nav>
+		<div style="margin-top : 200px;">
+			<alerts-area></alerts-area>
+		</div>
+		<div class="panel panel-default col-md-10 col-md-offset-1">
+	  		<div class="panel-heading" ng-hide="gc.isSelected(3)">Validation Options</div>
+	  		<div class="panel-heading" ng-show="gc.isSelected(3)">Validation Result</div>
+	  		<div class="panel-body">
+	  			<div style="min-height : 300px;" class="col-md-12" ng-show="gc.isLoading()">
+	  				<div>
+	  					<img style="margin-top : 140px; height : 20px;" class="col-md-4 col-md-offset-4" src="./img/ajax-loader.gif"/>
+	  				</div>
+	  				<div>
+	  					<span class="col-md-4 col-md-offset-5">{{gc.loadMsg()}}</span>
+	  				</div>
+	  			</div>
+	  			<section ng-show="gc.isSelected(1) && !gc.isLoading()" ng-controller="ProfileController as pc">
+	  				<ul class="nav nav-pills">
+						<li role="presentation" ng-class="{active: pc.preloaded}" ng-click="pc.setPreloaded(true)"><a href="#">Validation</a></li>
+						<li role="presentation" ng-class="{active: !pc.preloaded}" ng-click="pc.setPreloaded(false)"><a href="#">Upload Resource</a></li>
+					</ul>
+					<profile-selection ng-show="pc.preloaded"></profile-selection>
+					<upload-area	ng-hide="pc.preloaded"></upload-area>
+	  			</section>
+	    		<message-area ng-show="gc.isSelected(2) && !gc.isLoading()"></message-area>
+	    		<response-area ng-show="gc.isSelected(3) && !gc.isLoading()"></response-area>
+	  		</div>
+		</div>
+	</section>
+</body>
+</html>

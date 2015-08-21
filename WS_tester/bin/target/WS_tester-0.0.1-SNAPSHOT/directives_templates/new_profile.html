@@ -1,0 +1,65 @@
+<section class="container1" >
+	<form class="form">
+	<fieldset>
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-2 col-md-offset-1" >Profile File</label>
+			<div class="controls">
+					<div class="col-md-3 col-md-offset-1" ng-class="{'has-error' : np.getProfile().status === 'e', 'has-success' : np.getProfile().status === 'a'}">
+						<input class="form-control" disabled="disabled" ng-model="np.getProfile().fn"/>
+					</div>
+					<div class="btn btn-primary col-md-1">
+					    <span>Upload</span>
+					    <input type="file" class="upload" onchange="angular.element(this).scope().selected(this.files,'PROFILE',0)"/>
+					</div>
+			</div>
+		</div>
+		<div class="form-group col-md-12" ng-show="np.getProfile().status === 'a'">
+			<label class="control-label col-md-2 col-md-offset-1" >Tables</label>
+			<div class="controls">
+					<button class="col-md-4 col-md-offset-1 btn btn-warning" ng-click="np.addTable(np.nbTables)">Add Table</button>
+			</div>
+			<div class="col-md-12" style="margin-top : 5px;" ng-repeat="tab in np.getTables() track by $index">
+					<div class="col-md-3 col-md-offset-4" ng-class="{'has-error' : tab.status === 'e', 'has-success' : tab.status === 'a'}">
+						<input class="form-control" disabled="disabled" ng-model="tab.fn"/>
+					</div>
+					<div class="btn btn-primary col-md-1">
+					    <span>Upload</span>
+					    <input type="file" class="upload" id="{{$index}}" onchange="angular.element(this).scope().selected(this.files,'TABLE',this.id)"/>
+					</div>
+					<button type="button" class="close col-md-1 pull-left" aria-label="Close" ng-click="np.deleteT(tab)">
+							<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+		</div>
+		<div class="form-group col-md-12" ng-show="np.getProfile().status === 'a'">
+			<div class="controls col-md-8 col-md-offset-4"">
+				<label class="radio inline" for="radios-0">
+					<input ng-model="np.context" name="radios" id="radios-0" value="Context Based" checked="checked" type="radio">
+					Context Based
+				</label>
+				<label class="radio inline" for="radios-1">
+					<input ng-model="np.context" name="radios" id="radios-1" value="Context Free" type="radio">
+					Context Free
+				</label>
+			</div>
+		</div>
+		<div class="form-group col-md-12" ng-show="np.isCB()">
+			<label class="control-label col-md-2 col-md-offset-1" >Context File</label>
+			<div class="controls">
+					<div class="col-md-3 col-md-offset-1"  ng-class="{'has-success' : np.file}">
+						<input class="form-control" disabled="disabled" ng-model="np.fn"/>
+					</div>
+					<div class="btn btn-primary col-md-1">
+					    <span>Upload</span>
+					    <input type="file" class="upload" onchange="angular.element(this).scope().selected(this.files,'CONTEXT',0)"/>
+					</div>
+			</div>
+		</div>
+	</fieldset>
+	</form>
+</section>
+<nav>
+	<ul class="pager">
+		<li><a ng-click="np.go()" ng-show="np.next()" href="#">Next <span aria-hidden="true">&rarr;</span></a></li>
+	</ul>
+</nav>

@@ -1,0 +1,24 @@
+<section class="container1" >
+	<form class="form">
+	<fieldset>
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-2 col-md-offset-1" >New Soap Endpoint URL</label>
+			<div class="col-md-6 col-md-offset-1">
+				<input ng-model="ep.url" class="form-control" type="text"/>
+			</div>
+		</div>
+		<div class="control-group col-md-12">
+			<div class="controls col-md-3 col-md-offset-4">
+				<button class="btn btn-primary col-md-12" ng-click="ep.change()">
+					Change
+				</button>
+			</div>
+			<div class="controls col-md-3">
+				<button class="btn btn-default col-md-12" ng-click="ep.useDefault()">
+					Use Default
+				</button>
+			</div>
+		</div>
+	</fieldset>
+	</form>
+</section>

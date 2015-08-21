@@ -1,0 +1,14 @@
+<div class="col-md-10 col-md-offset-1">
+	<div class="alert alert-success" role="alert" ng-repeat="success in alerts.success() track by $index" >
+		<span ng-bind-html="success | sanitize"></span>
+		<button type="button" class="close" aria-label="Close" ng-click="alerts.dismiss($index,'s')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="alert alert-danger" role="alert" ng-repeat="errors in alerts.errors() track by $index">
+		<span ng-bind-html="errors | sanitize"></span>
+		<button type="button" class="close" aria-label="Close" ng-click="alerts.dismiss($index,'e')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:HL7V2MessageValidationContextDefinition xmlns:con="http://www.nist.gov/healthcare/validation/message/hl7/v2/context">
+	<con:ValidationConfiguration>
+		<con:HL7Tables>
+			<con:All/>
+		</con:HL7Tables>
+		<con:UserTables>
+			<con:All/>
+		</con:UserTables>
+		<con:TablesToExclude>
+			<con:Table>PHVS_County_FIPS_6-4</con:Table>
+			<con:Table>Postal Code Value Set</con:Table>
+			<con:Table>0363</con:Table>
+			<con:Table>Laboratory Order Value Set</con:Table>
+			<con:Table>Laboratory Observation Identifier Value Set</con:Table>
+			<con:Table>Laboratory Coded Observation Value Set</con:Table>
+<!-- 			<con:Table>Reason For Study Value Set</con:Table> -->
+			<con:Table>PHVS_ModifierOrQualifier_CDC</con:Table>
+			<con:Table>PHVS_Animal_CDC</con:Table>
+			<con:Table>Body Site Value Set</con:Table>
+			<con:Table>0296</con:Table>
+			<con:Table>0171</con:Table>
+		</con:TablesToExclude>
+	</con:ValidationConfiguration>
+	<con:FailureInterpretation>
+		<con:MessageFailure Type="MESSAGE_STRUCTURE" Result="ERROR"/>
+		<con:MessageFailure Type="USAGE" Result="ERROR"/>
+		<con:MessageFailure Type="CARDINALITY" Result="ERROR"/>
+		<con:MessageFailure Type="LENGTH" Result="IGNORE"/>
+		<con:MessageFailure Type="DATATYPE" Result="ERROR"/>
+		<con:MessageFailure Type="DATA" Result="ERROR"/>
+		<con:MessageFailure Type="DATA_PASSED" Result="AFFIRMATIVE"/>
+		<con:MessageFailure Type="CHECKED" Result="AFFIRMATIVE"/>
+		<con:MessageFailure Type="VERSION" Result="ERROR"/>
+		<con:MessageFailure Type="MESSAGE_STRUCTURE_ID" Result="ERROR"/>
+		<con:MessageFailure Type="MESSAGE_VALIDATION_CONTEXT" Result="ALERT"/>
+		<con:MessageFailure Type="TABLE_NOT_FOUND" Result="ALERT"/>
+		<con:MessageFailure Type="AMBIGUOUS_PROFILE" Result="ERROR"/>
+	</con:FailureInterpretation>
+</con:HL7V2MessageValidationContextDefinition>

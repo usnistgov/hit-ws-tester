@@ -1,0 +1,817 @@
+<div class="report-section">
+  
+    <table class="forumline title-background" width="100%" cellspacing="1" cellpadding="10" >
+        <tbody class="cf-tbody">
+        <tr>
+            <td>
+                <span class="maintitle">Message Validation Report</span>
+            </td>
+            <td align="right" style="font-weight:bold">{{ r.getReport().metaData.date }} </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="report-section">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody class="cf-tbody">
+        <tr>
+            <td class="row1 border_right">Validation Type</td>
+            <td class="row2">Context-free</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="report-section">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody class="cf-tbody border_right">
+        <tr class="border_bottom">
+            <td class="row1 border_right" valign="top" rowspan="2">Testing Tool</td>
+            <td class="row2 border_right ">Name</td>
+            <td class="row3 " >{{ r.getReport().metaData.service.name }}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row2 border_right ">Version</td>
+            <td class="row3 ">{{ r.getReport().metaData.service.version }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="report-section">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody>
+        <tr class="border_bottom">
+            <td class="row1 border_right"  valign="top" rowspan="6">Profile</td>
+            <td class="row2 border_right dark-gray">Name</td>
+            <td class="row3 ">{{ r.getReport().metaData.profile.Name }}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row2 border_right dark-gray">Organization</td>
+            <td class="row3 ">{{ r.getReport().metaData.profile.OrgName }}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row2 border_right dark-gray">Type</td>
+            <td class="row3">{{ r.getReport().metaData.profile.Type }}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row2 border_right dark-gray">Profile Version</td>
+            <td class="row3 ">{{ r.getReport().metaData.profile.Version }}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row2 border_right dark-gray">Profile Date</td>
+            <td class="row3 "></td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row2 border_right dark-gray">Standard</td>
+            <td class="row3 ">{{ r.getReport().metaData.standardType + " " + r.getReport().metaData.profile.Standard }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="report-section">
+ 
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody>
+        <tr>
+            <td class="row1 border_right" valign="top" rowspan="1">Message </td>
+            <td class="row2 border_right dark-gray">Encoding</td>
+            <td class="row3 ">{{ r.getReport().metaData.message.encoding }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="report-section">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody>
+        <tr class="row1">
+            <th style="border-bottom:2pt #005C99 solid" colspan="2">Summary</th>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row6 border_right">Errors</td>
+            <td class="row2" style="color: red; font-weight: bold">{{ r.getReport().metaData.counts.error }}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row6 border_right">Alerts</td>
+            <td class="row2" style="color: maroon; font-weight: bold">{{ r.getReport().metaData.counts.alert }}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row6 border_right">Warnings</td>
+            <td class="row2" style="color: gold; font-weight: bold" >{{ r.getReport().metaData.counts.warning }}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row6 border_right">Informational</td>
+            <td class="row2" style="color: blue; font-weight: bold" >{{ r.getReport().metaData.counts.informational }}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row6 border_right">Affirmatives</td>
+            <td class="row2" style="color: green; font-weight: bold" >{{ r.getReport().metaData.counts.affirmative }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="report-section">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody>
+        <tr class="row1">
+            <th style="border-bottom:2pt #005C99 solid">Failures interpretation</th>
+            <td align="right" style="border-bottom:2pt #005C99 solid"><input type="checkbox" ng-model="checkedFI" ng-init="checkedFI=false" /></td>
+        </tr>
+        <tr ng-show="checkedFI">
+            <td class="row5 border_bottom border_right">Category</td>
+            <td class="row5 border_bottom">Classification</td>
+        </tr>
+        <tr class="border_bottom" ng-repeat=" step in r.getReport().metaData.failuresInterpretation" ng-show="checkedFI">
+       		<td class="row6 border_right" ng-repeat=" (key,value) in step ">{{key}}</td>
+           	<td class="row2" ng-repeat=" (key,value) in step ">{{value}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="report-section">
+
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody>
+        <tr  class="row1">
+            <td >Validation Errors </td>
+            <td align="right" style="color: red; font-weight: bold"> Count: {{ r.getReport().metaData.counts.error }} <input type="checkbox" ng-model="checked" ng-init="checked=true" /></td>
+        </tr>
+        </tbody>
+    </table>
+ 
+<span ng-if="checked" >
+    <table class="forumline cf-report-category"  width="100%" cellspacing="1" cellpadding="2"   ng-repeat="category in r.getReport().Error.categories">
+        <tbody>
+        <tr>
+            <td class="row5 border_bottom" colspan="4">{{category.name}}</td>
+        </tr>
+        </tbody>
+        <tbody  class="border_bottom" ng-repeat="row in category.data" ng-class="'alternate' + ($index % 2)">
+        
+        <tr class="border_bottom">
+           
+            <td class="row3 border_right" rowspan="{{(r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)) ? 6 : 5}}" style="width:20px;" >{{$index + 1}}</td>
+            <td class="row3 border_right">Type:</td>
+            <td class="row3" colspan="2">{{row.category}}</td>
+        
+        </tr>
+        <tr class="border_bottom">
+            <td class="row3 border_right">Description:</td>
+            <td class="row3" colspan="2" ng-bind-html="row.description | sanitize">
+            </td>
+        </tr>
+        <tr class="row3">
+            <td  rowspan="3" class="border_right border_bottom" style="width:100px;"> Location:</td>
+            <td ng-show="row.line != undefined && row.line != -1" style="font-weight: bold">Line: {{row.line}}</td>
+            
+        </tr>
+        <tr ng-show="row.column != undefined && row.column != -1" class="row3">
+            <td style="font-weight: bold">Column: {{row.column}}</td>
+           
+        </tr>
+        <tr class="row3 border_bottom" ng-show="row.path != undefined">
+            <td style="font-weight: bold">Path: {{row.path}}</td>
+            
+        </tr>
+        <tr class="row3" ng-show="r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)">
+        	<td class="border_right">Details:</td>
+            <td colspan="2">
+	            <ul class="nav nav-pills pull-right" ng-init="st1 = false;md1 = false;">
+					<li ng-class="{active : st1}" ng-show="r.hasStack(row.stackTrace)" ng-click="st1 = !st1; md1 = false;"><a>Stack Trace</a></li>
+					<li ng-class="{active : md1}" role="presentation" ng-show="r.hasMeta(row.metaData)" ng-click="md1 = !md1; st1 = false;"><a>Metadata</a></li>
+				</ul>
+				<div ng-show="st1" class="col-md-12" style="margin-top : 10px;">
+					<div ng-repeat="trace in row.stackTrace">
+						<table class="table table-condensed table-bordered">
+							<thead>
+								<tr>
+									<td colspan='2' style="background-color : #D2D2D2;">Failed assertion</td>
+								</tr>
+							</thead>
+							<tr>
+								<td colspan='2' style="background-color : #FFFFFF;">{{ trace.assertion }}</td>
+							</tr>
+							<tr ng-repeat="reason in trace.reasons">
+								<td style="background-color : #D2D2D2;">Reason</td>
+								<td style="background-color : #FFFFFF;">{{ reason }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div ng-show="md1" class="col-md-12" style="margin-top : 10px;">
+					<div ng-if="row.metaData.reference != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.reference.chapter != undefined">
+								<td style="background-color : #D2D2D2;">Chapter</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.chapter }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.section != undefined">
+								<td style="background-color : #D2D2D2;">Section</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.section }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.page != undefined">
+								<td style="background-color : #D2D2D2;">Page</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.page }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.url != undefined">
+								<td style="background-color : #D2D2D2;">URL</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.url }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.source != undefined">
+								<td style="background-color : #D2D2D2;">Source</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.source }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.generatedBy != undefined">
+								<td style="background-color : #D2D2D2;">Generated By</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.generatedBy }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.referencePath != undefined">
+								<td style="background-color : #D2D2D2;">Reference Path</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.referencePath }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.testDataCategorization != undefined">
+								<td style="background-color : #D2D2D2;">Test Data Categorization</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.testDataCategorization }}</td>
+							</tr>
+						</table>
+					</div>
+					<div ng-if="row.metaData.valueSet != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.valueSet.id != undefined">
+								<td style="background-color : #D2D2D2;">ID</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.id }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.stability != undefined">
+								<td style="background-color : #D2D2D2;">Stability</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.stability }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.extensibility != undefined">
+								<td style="background-color : #D2D2D2;">Extensibility</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.extensibility }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingStrength != undefined">
+								<td style="background-color : #D2D2D2;">Binding Strength</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingStrength }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingLocation != undefined">
+								<td style="background-color : #D2D2D2;">Binding Location</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingLocation }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</td> 
+        </tr>
+        </tbody>
+
+    </table>  
+ </span>
+</div>
+
+
+
+<div class="report-section">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody>
+        <tr class="row1">
+            <td>Validation Alerts </td>
+            <td align="right" style="color: maroon; font-weight: bold">Count: {{ r.getReport().metaData.counts.alert }} <input type="checkbox" ng-model="checked1" ng-init="checked1=false" /></td>
+        </tr>
+        </tbody>
+    </table>
+    <span ng-if="checked1" >
+    <table class="forumline cf-report-category" width="100%" cellspacing="1" cellpadding="2"   ng-repeat="category in r.getReport().Alert.categories">
+        <tbody>
+        <tr>
+            <td class="row5 border_bottom" colspan="4">{{category.name}}</td>
+        </tr>
+        </tbody>
+        <tbody  class="border_bottom" ng-repeat="row in category.data" ng-class="'alternate' + ($index % 2)">
+        <tr class="border_bottom">
+            <td class="row3 border_right" rowspan="{{(r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)) ? 6 : 5}}" style="width:20px;" >{{$index + 1}}</td>
+            <td class="row3 border_right">Type:</td>
+            <td class="row3" colspan="2">{{row.category}}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row3 border_right">Description:</td>
+            <td class="row3" colspan="2" ng-bind-html="row.description | sanitize">
+            </td>
+        </tr>
+        <tr class="row3">
+            <td  rowspan="3" class="border_right border_bottom" style="width:100px;"> Location:</td>
+            <td ng-show="row.line != undefined && row.line != -1" style="font-weight: bold">Line: {{row.line}}</td>
+            
+        </tr>
+        <tr ng-show="row.column != undefined && row.column != -1" class="row3">
+            <td style="font-weight: bold">Column: {{row.column}}</td>
+           
+        </tr>
+        <tr class="row3 border_bottom" ng-show="row.path != undefined">
+            <td style="font-weight: bold">Path: {{row.path}}</td>
+        </tr>
+        <tr class="row3" ng-show="r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)">
+        	<td class="border_right">Details:</td>
+            <td colspan="2">
+	            <ul class="nav nav-pills pull-right" ng-init="st2 = false;md2 = false;">
+					<li ng-class="{active : st2}" ng-show="r.hasStack(row.stackTrace)" ng-click="st2 = !st2; md2 = false;"><a>Stack Trace</a></li>
+					<li ng-class="{active : md2}" role="presentation" ng-show="r.hasMeta(row.metaData)" ng-click="md2 = !md2; st2 = false;"><a>Metadata</a></li>
+				</ul>
+				<div ng-show="st2" class="col-md-12" style="margin-top : 10px;">
+					<div ng-repeat="trace in row.stackTrace">
+						<table class="table table-condensed table-bordered">
+							<thead>
+								<tr>
+									<td colspan='2' style="background-color : #D2D2D2;">Failed assertion</td>
+								</tr>
+							</thead>
+							<tr>
+								<td colspan='2' style="background-color : #FFFFFF;">{{ trace.assertion }}</td>
+							</tr>
+							<tr ng-repeat="reason in trace.reasons">
+								<td style="background-color : #D2D2D2;">Reason</td>
+								<td style="background-color : #FFFFFF;">{{ reason }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div ng-show="md2" class="col-md-12" style="margin-top : 10px;">
+					<div ng-if="row.metaData.reference != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.reference.chapter != undefined">
+								<td style="background-color : #D2D2D2;">Chapter</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.chapter }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.section != undefined">
+								<td style="background-color : #D2D2D2;">Section</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.section }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.page != undefined">
+								<td style="background-color : #D2D2D2;">Page</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.page }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.url != undefined">
+								<td style="background-color : #D2D2D2;">URL</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.url }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.source != undefined">
+								<td style="background-color : #D2D2D2;">Source</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.source }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.generatedBy != undefined">
+								<td style="background-color : #D2D2D2;">Generated By</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.generatedBy }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.referencePath != undefined">
+								<td style="background-color : #D2D2D2;">Reference Path</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.referencePath }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.testDataCategorization != undefined">
+								<td style="background-color : #D2D2D2;">Test Data Categorization</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.testDataCategorization }}</td>
+							</tr>
+						</table>
+					</div>
+					<div ng-if="row.metaData.valueSet != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.valueSet.id != undefined">
+								<td style="background-color : #D2D2D2;">ID</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.id }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.stability != undefined">
+								<td style="background-color : #D2D2D2;">Stability</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.stability }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.extensibility != undefined">
+								<td style="background-color : #D2D2D2;">Extensibility</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.extensibility }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingStrength != undefined">
+								<td style="background-color : #D2D2D2;">Binding Strength</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingStrength }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingLocation != undefined">
+								<td style="background-color : #D2D2D2;">Binding Location</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingLocation }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</td> 
+        </tr>
+        </tbody>
+    </table>
+    </span>
+</div>
+
+<div class="report-section">
+    <table class="forumline " width="100%" cellspacing="1" cellpadding="2" >
+        <tbody>
+        <tr class="row1">
+            <td>Validation Warnings </td>
+            <td align="right" style="color: gold; font-weight: bold">Count: {{ r.getReport().metaData.counts.warning }} <input type="checkbox" ng-model="checked2" ng-init="checked2=false" />
+        </tr>
+        </tbody>
+    </table>
+    <span ng-if="checked2" >
+    <table class="forumline cf-report-category" width="100%" cellspacing="1" cellpadding="2"   ng-repeat="category in r.getReport().Warning.categories" >
+         <tbody>
+        <tr>
+            <td class="row5 border_bottom" colspan="4">{{category.name}}</td>
+        </tr>
+        </tbody>
+        <tbody  class="border_bottom" ng-repeat="row in category.data" ng-class="'alternate' + ($index % 2)">
+        <tr class="border_bottom">
+            <td class="row3 border_right" rowspan="{{(r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)) ? 6 : 5}}" style="width:20px;" >{{$index + 1}}</td>
+            <td class="row3 border_right">Type:</td>
+            <td class="row3" colspan="2">{{row.category}}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row3 border_right">Description:</td>
+            <td class="row3" colspan="2" ng-bind-html="row.description | sanitize">
+            </td>
+        </tr>
+        <tr class="row3">
+            <td  rowspan="3" class="border_right border_bottom" style="width:100px;"> Location:</td>
+            <td ng-show="row.line != undefined && row.line != -1" style="font-weight: bold">Line: {{row.line}}</td>
+           
+        </tr>
+        <tr ng-show="row.column != undefined && row.column != -1" class="row3">
+            <td style="font-weight: bold">Column: {{row.column}}</td>
+           
+        </tr>
+        <tr class="row3 border_bottom" ng-show="row.path != undefined">
+            <td style="font-weight: bold">Path: {{row.path}}</td>
+            
+        </tr>
+        <tr class="row3" ng-show="r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)">
+        	<td class="border_right">Details:</td>
+            <td colspan="2">
+	            <ul class="nav nav-pills pull-right" ng-init="st3 = false;md3 = false;">
+					<li ng-class="{active : st3}" ng-show="r.hasStack(row.stackTrace)" ng-click="st3 = !st3; md3 = false;"><a>Stack Trace</a></li>
+					<li ng-class="{active : md3}" role="presentation" ng-show="r.hasMeta(row.metaData)" ng-click="md3 = !md3; st3 = false;"><a>Metadata</a></li>
+				</ul>
+				<div ng-show="st3" class="col-md-12" style="margin-top : 10px;">
+					<div ng-repeat="trace in row.stackTrace">
+						<table class="table table-condensed table-bordered">
+							<thead>
+								<tr>
+									<td colspan='2' style="background-color : #D2D2D2;">Failed assertion</td>
+								</tr>
+							</thead>
+							<tr>
+								<td colspan='2' style="background-color : #FFFFFF;">{{ trace.assertion }}</td>
+							</tr>
+							<tr ng-repeat="reason in trace.reasons">
+								<td style="background-color : #D2D2D2;">Reason</td>
+								<td style="background-color : #FFFFFF;">{{ reason }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div ng-show="md3" class="col-md-12" style="margin-top : 10px;">
+					<div ng-if="row.metaData.reference != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.reference.chapter != undefined">
+								<td style="background-color : #D2D2D2;">Chapter</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.chapter }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.section != undefined">
+								<td style="background-color : #D2D2D2;">Section</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.section }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.page != undefined">
+								<td style="background-color : #D2D2D2;">Page</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.page }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.url != undefined">
+								<td style="background-color : #D2D2D2;">URL</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.url }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.source != undefined">
+								<td style="background-color : #D2D2D2;">Source</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.source }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.generatedBy != undefined">
+								<td style="background-color : #D2D2D2;">Generated By</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.generatedBy }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.referencePath != undefined">
+								<td style="background-color : #D2D2D2;">Reference Path</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.referencePath }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.testDataCategorization != undefined">
+								<td style="background-color : #D2D2D2;">Test Data Categorization</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.testDataCategorization }}</td>
+							</tr>
+						</table>
+					</div>
+					<div ng-if="row.metaData.valueSet != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.valueSet.id != undefined">
+								<td style="background-color : #D2D2D2;">ID</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.id }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.stability != undefined">
+								<td style="background-color : #D2D2D2;">Stability</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.stability }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.extensibility != undefined">
+								<td style="background-color : #D2D2D2;">Extensibility</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.extensibility }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingStrength != undefined">
+								<td style="background-color : #D2D2D2;">Binding Strength</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingStrength }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingLocation != undefined">
+								<td style="background-color : #D2D2D2;">Binding Location</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingLocation }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</td> 
+        </tr>
+        </tbody>
+    </table>
+    </span>
+</div>
+
+
+<div class="report-section">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody>
+        <tr class="row1">
+            <td>Validation Informational </td>
+            <td align="right" style="color: blue; font-weight: bold">Count: {{ r.getReport().metaData.counts.informational }} <input type="checkbox" ng-model="checked3" ng-init="checked3=false" /></td>
+        </tr>
+        </tbody>
+    </table>
+    <span ng-if="checked3" >
+    <table class="forumline cf-report-category" width="100%" cellspacing="1" cellpadding="2"   ng-repeat="category in r.getReport().Informational.categories">
+         <tbody>
+        <tr>
+            <td class="row5 border_bottom" colspan="4">{{category.name}}</td>
+        </tr>
+        </tbody>
+        <tbody  class="border_bottom" ng-repeat="row in category.data" ng-class="'alternate' + ($index % 2)">
+        <tr class="border_bottom">
+            <td class="row3 border_right" rowspan="{{(r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)) ? 6 : 5}}" style="width:20px;" >{{$index + 1}}</td>
+            <td class="row3 border_right">Type:</td>
+            <td class="row3" colspan="2">{{row.category}}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row3 border_right">Description:</td>
+            <td class="row3" colspan="2" ng-bind-html="row.description | sanitize">
+            </td>
+        </tr>
+        <tr class="row3">
+            <td  rowspan="3" class="border_right border_bottom" style="width:100px;"> Location:</td>
+            <td ng-show="row.line != undefined && row.line != -1" style="font-weight: bold">Line: {{row.line}}</td>
+            
+        </tr>
+        <tr ng-show="row.column != undefined && row.column != -1" class="row3">
+            <td style="font-weight: bold">Column: {{row.column}}</td>
+           
+        </tr>
+        <tr class="row3 border_bottom" ng-show="row.path != undefined">
+            <td style="font-weight: bold">Path: {{row.path}}</td>
+         
+        </tr>
+        <tr class="row3" ng-show="r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)">
+        	<td class="border_right">Details:</td>
+            <td colspan="2">
+	            <ul class="nav nav-pills pull-right" ng-init="st4 = false;md4 = false;">
+					<li ng-class="{active : st4}" ng-show="r.hasStack(row.stackTrace)" ng-click="st4 = !st4; md4 = false;"><a>Stack Trace</a></li>
+					<li ng-class="{active : md4}" role="presentation" ng-show="r.hasMeta(row.metaData)" ng-click="md4 = !md4; st4 = false;"><a>Metadata</a></li>
+				</ul>
+				<div ng-show="st4" class="col-md-12" style="margin-top : 10px;">
+					<div ng-repeat="trace in row.stackTrace">
+						<table class="table table-condensed table-bordered">
+							<thead>
+								<tr>
+									<td colspan='2' style="background-color : #D2D2D2;">Failed assertion</td>
+								</tr>
+							</thead>
+							<tr>
+								<td colspan='2' style="background-color : #FFFFFF;">{{ trace.assertion }}</td>
+							</tr>
+							<tr ng-repeat="reason in trace.reasons">
+								<td style="background-color : #D2D2D2;">Reason</td>
+								<td style="background-color : #FFFFFF;">{{ reason }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div ng-show="md4" class="col-md-12" style="margin-top : 10px;">
+					<div ng-if="row.metaData.reference != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.reference.chapter != undefined">
+								<td style="background-color : #D2D2D2;">Chapter</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.chapter }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.section != undefined">
+								<td style="background-color : #D2D2D2;">Section</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.section }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.page != undefined">
+								<td style="background-color : #D2D2D2;">Page</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.page }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.url != undefined">
+								<td style="background-color : #D2D2D2;">URL</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.url }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.source != undefined">
+								<td style="background-color : #D2D2D2;">Source</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.source }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.generatedBy != undefined">
+								<td style="background-color : #D2D2D2;">Generated By</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.generatedBy }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.referencePath != undefined">
+								<td style="background-color : #D2D2D2;">Reference Path</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.referencePath }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.testDataCategorization != undefined">
+								<td style="background-color : #D2D2D2;">Test Data Categorization</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.testDataCategorization }}</td>
+							</tr>
+						</table>
+					</div>
+					<div ng-if="row.metaData.valueSet != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.valueSet.id != undefined">
+								<td style="background-color : #D2D2D2;">ID</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.id }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.stability != undefined">
+								<td style="background-color : #D2D2D2;">Stability</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.stability }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.extensibility != undefined">
+								<td style="background-color : #D2D2D2;">Extensibility</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.extensibility }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingStrength != undefined">
+								<td style="background-color : #D2D2D2;">Binding Strength</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingStrength }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingLocation != undefined">
+								<td style="background-color : #D2D2D2;">Binding Location</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingLocation }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</td> 
+        </tr>
+        </tbody>
+    </table>
+    </span>
+</div>
+
+
+<div class="report-section">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" >
+        <tbody>
+        <tr class="row1">
+            <td>Validation Affirmatives </td>
+            <td align="right" style="color: green; font-weight: bold">Count: {{ r.getReport().metaData.counts.affirmative }} <input type="checkbox" ng-model="checked4" ng-init="checked4=false" /></td>
+        </tr>
+        </tbody>
+    </table>
+    <span ng-if="checked4" >
+    <table class="forumline cf-report-category" width="100%" cellspacing="1" cellpadding="2"   ng-repeat="category in r.getReport().Affirmative.categories" >
+        <tbody>
+        <tr>
+            <td class="row5 border_bottom" colspan="4">{{category.name}}</td>
+        </tr>
+        </tbody>
+        <tbody  class="border_bottom" ng-repeat="row in category.data" ng-class="'alternate' + ($index % 2)">
+        <tr class="border_bottom">
+            <td class="row3 border_right" rowspan="{{(r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)) ? 6 : 5}}" style="width:20px;" >{{$index + 1}}</td>
+            <td class="row3 border_right">Type:</td>
+            <td class="row3" colspan="2">{{row.category}}</td>
+        </tr>
+        <tr class="border_bottom">
+            <td class="row3 border_right">Description:</td>
+            <td class="row3" colspan="2" ng-bind-html="row.description | sanitize">
+            </td>
+        </tr>
+        <tr class="row3">
+            <td  rowspan="3" class="border_right border_bottom" style="width:100px;"> Location:</td>
+            <td ng-show="row.line != undefined && row.line != -1" style="font-weight: bold">Line: {{row.line}}</td>
+           
+        </tr>
+        <tr ng-show="row.column != undefined && row.column != -1" class="row3">
+            <td style="font-weight: bold">Column: {{row.column}}</td>
+           
+        </tr>
+        <tr class="row3 border_bottom" ng-show="row.path != undefined">
+            <td style="font-weight: bold">Path: {{row.path}}</td>
+          
+        </tr>
+        <tr class="row3" ng-show="r.hasStack(row.stackTrace) || r.hasMeta(row.metaData)">
+        	<td class="border_right">Details:</td>
+            <td colspan="2">
+	            <ul class="nav nav-pills pull-right" ng-init="st5 = false;md5 = false;">
+					<li ng-class="{active : st5}" ng-show="r.hasStack(row.stackTrace)" ng-click="st5 = !st5; md5 = false;"><a>Stack Trace</a></li>
+					<li ng-class="{active : md5}" role="presentation" ng-show="r.hasMeta(row.metaData)" ng-click="md5 = !md5; st5 = false;"><a>Metadata</a></li>
+				</ul>
+				<div ng-show="st5" class="col-md-12" style="margin-top : 10px;">
+					<div ng-repeat="trace in row.stackTrace">
+						<table class="table table-condensed table-bordered">
+							<thead>
+								<tr>
+									<td colspan='2' style="background-color : #D2D2D2;">Failed assertion</td>
+								</tr>
+							</thead>
+							<tr>
+								<td colspan='2' style="background-color : #FFFFFF;">{{ trace.assertion }}</td>
+							</tr>
+							<tr ng-repeat="reason in trace.reasons">
+								<td style="background-color : #D2D2D2;">Reason</td>
+								<td style="background-color : #FFFFFF;">{{ reason }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div ng-show="md5" class="col-md-12" style="margin-top : 10px;">
+					<div ng-if="row.metaData.reference != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.reference.chapter != undefined">
+								<td style="background-color : #D2D2D2;">Chapter</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.chapter }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.section != undefined">
+								<td style="background-color : #D2D2D2;">Section</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.section }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.page != undefined">
+								<td style="background-color : #D2D2D2;">Page</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.page }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.url != undefined">
+								<td style="background-color : #D2D2D2;">URL</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.url }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.source != undefined">
+								<td style="background-color : #D2D2D2;">Source</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.source }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.generatedBy != undefined">
+								<td style="background-color : #D2D2D2;">Generated By</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.generatedBy }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.referencePath != undefined">
+								<td style="background-color : #D2D2D2;">Reference Path</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.referencePath }}</td>
+							</tr>
+							<tr ng-if="row.metaData.reference.testDataCategorization != undefined">
+								<td style="background-color : #D2D2D2;">Test Data Categorization</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.reference.testDataCategorization }}</td>
+							</tr>
+						</table>
+					</div>
+					<div ng-if="row.metaData.valueSet != undefined">
+						<table class="table table-condensed table-bordered">
+							<tr ng-if="row.metaData.valueSet.id != undefined">
+								<td style="background-color : #D2D2D2;">ID</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.id }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.stability != undefined">
+								<td style="background-color : #D2D2D2;">Stability</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.stability }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.extensibility != undefined">
+								<td style="background-color : #D2D2D2;">Extensibility</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.extensibility }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingStrength != undefined">
+								<td style="background-color : #D2D2D2;">Binding Strength</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingStrength }}</td>
+							</tr>
+							<tr ng-if="row.metaData.valueSet.bindingLocation != undefined">
+								<td style="background-color : #D2D2D2;">Binding Location</td>
+								<td style="background-color : #FFFFFF;">{{ row.metaData.valueSet.bindingLocation }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</td> 
+        </tr>
+        </tbody>
+    </table>
+    </span>
+</div>

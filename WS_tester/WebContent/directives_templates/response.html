@@ -1,0 +1,38 @@
+<table class="table table-striped table-condensed table-bordered">
+	<tr>
+		<th colspan=2> Performance </th>
+	</tr>
+	<tr>
+		<td> Time </td>
+		<td> {{ resp.time() }} ms</td>
+	</tr>
+</table>
+<div ng-show="resp.is('zip')" style="min-height : 200px;" class="col-md-12" >
+	<section class="col-md-4 col-md-offset-4" style="margin-top : 40px;">
+		<table class="table table-striped table-condensed table-bordered">
+			<tr>
+				<td><strong>File size</strong></td>
+				<td>{{resp.fSize()}}</td>
+			</tr>
+			<tr>
+				<td><strong>Number of reports</strong></td>
+				<td>{{resp.nbR()}}</td>
+			</tr>
+			<tr>
+				<td colspan=2>
+					<a href="{{resp.getPath()}}">
+						<button  class="col-md-12 btn btn-default btn-lg">
+		  					<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download
+						</button>
+					</a>
+				</td>
+			</tr>
+		</table>	
+	</section>
+</div>
+<div ng-show="resp.is('old')" id="result" ng-bind-html="resp.getResponse() | sanitize">
+</div>
+<div ng-show="resp.is('new')">
+	<new-report></new-report>
+</div>
+<button ng-click="resp.newV()" class="col-md-4 col-md-offset-4 btn btn-primary" style="margin-top : 20px;"> New Validation </button>
