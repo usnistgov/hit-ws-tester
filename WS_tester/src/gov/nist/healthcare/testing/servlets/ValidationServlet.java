@@ -7,7 +7,7 @@ import gov.nist.healthcare.testing.model.LoadedResources;
 import gov.nist.healthcare.testing.model.StringFormat;
 import gov.nist.healthcare.testing.model.ValidationObject;
 import gov.nist.healthcare.testing.wsclient.HL7V2WS;
-import gov.nist.healthcare.unified.XMLConvert;
+import gov.nist.healthcare.unified.model.EnhancedReport;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -101,6 +101,8 @@ public class ValidationServlet extends HttpServlet {
 						transformer.transform(new StreamSource(is), new StreamResult(os));
 						String result = os.toString();
 						result = result.replaceAll("<br>", " ");
+						System.out.println(vo.getResponse());
+						result = EnhancedReport.from("xml",vo.getResponse()).render("iz-report", null);
 						JSONObject o = new JSONObject();
 						o.put("type", "old");
 						o.put("content", result);
@@ -119,10 +121,11 @@ public class ValidationServlet extends HttpServlet {
 				else {
 					//StringFormat sf = new StringFormat();
 					//System.out.println(sf.format(vo.getResponse()));
+					EnhancedReport er = EnhancedReport.from("json", vo.getResponse());
 					JSONObject o = new JSONObject();
 					o.put("type", "new");
-					o.put("content", vo.getResponse());
-					o.put("xml", XMLConvert.XML(XMLConvert.convert(new JSONObject(vo.getResponse()))));
+					o.put("content", er.render("iz-report", null));
+					o.put("xml", er.to("xml").toString());
 					o.put("time", time);
 					response.setContentType("application/json");
 					response.getOutputStream().print(o.toString());

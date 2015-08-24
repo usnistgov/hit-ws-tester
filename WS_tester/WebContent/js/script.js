@@ -372,9 +372,6 @@
 						co.message = this.content;
 						toolkit.validate().then(function(data){
 							general.response.type = data.data.type;
-							if(general.response.type === 'new')
-								general.response.content = JSON.parse(data.data.content);
-							else
 								general.response.content = data.data.content;
 							
 							general.time = data.data.time;
@@ -575,13 +572,7 @@
 				}
 			},
 			link : function( $scope, element, attributes, ctrl ) {
-				$scope.$watch(function () {
-				    return general.response;
-				},
-				function(newVal, oldVal) {
-			        angular.element( '#result table' ).toggleClass( 'table table-striped table-condensed table-bordered' );
-				}, true);
-				
+
 				
 			},
 			controllerAs: "resp"

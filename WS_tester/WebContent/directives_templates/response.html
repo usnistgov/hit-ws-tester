@@ -30,9 +30,6 @@
 		</table>	
 	</section>
 </div>
-<div ng-show="resp.is('old')" id="result" ng-bind-html="resp.getResponse() | sanitize">
-</div>
-<div ng-show="resp.is('new')">
-	<new-report></new-report>
+<div ng-show="resp.is('old') || resp.is('new')" id="result" ng-bind-html="resp.getResponse() | sanitize">
 </div>
 <button ng-click="resp.newV()" class="col-md-4 col-md-offset-4 btn btn-primary" style="margin-top : 20px;"> New Validation </button>

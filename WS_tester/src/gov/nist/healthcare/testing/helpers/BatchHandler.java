@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 import gov.nist.healthcare.testing.model.ValidationObject;
 import gov.nist.healthcare.testing.wsclient.HL7V2WS;
-import gov.nist.healthcare.unified.XMLConvert;
+import gov.nist.healthcare.unified.model.EnhancedReport;
 
 public class BatchHandler {
 	
@@ -104,7 +104,8 @@ public class BatchHandler {
 				else
 				{
 					System.out.println(configO.getResponse());
-					writer.write(XMLConvert.XML(XMLConvert.convert(new JSONObject(configO.getResponse()))));
+					EnhancedReport r = EnhancedReport.from("json",configO.getResponse());
+					writer.write(r.to("xml").toString());
 				}
 				writer.flush();
 				writer.close();
@@ -112,14 +113,10 @@ public class BatchHandler {
 			}
 			writer.close();
 			return "Error Validation";
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "Error FileNF";
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "Error UEE";
 		}
 	}
 	
