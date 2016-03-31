@@ -4,9 +4,11 @@
 	<meta charset="UTF-8">
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
 	<script src="js/script.js"></script>
 	<script src="bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
 	<script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
+	<script src="bower_components/ui-bootstrap-tpls-1.2.5.js"></script>
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="custom/style.css">
 	<link rel="stylesheet" type="text/css" href="style/main.scss">
@@ -48,10 +50,12 @@
 						<li role="presentation" ng-class="{active: gc.activeT(1)}" ng-click="gc.activate(1); pc.reload();"><a href="#">Validation</a></li>
 						<li role="presentation" ng-class="{active: gc.activeT(2)}" ng-click="gc.activate(2); pc.reload();"><a href="#">Upload Resource</a></li>
 						<li role="presentation" ng-class="{active: gc.activeT(3)}" ng-click="gc.activate(3)"><a href="#">Soap Endpoint</a></li>
+						<li role="presentation" ng-class="{active: gc.activeT(4)}" ng-click="gc.activate(4);"><a href="#">Quick Test</a></li>
 					</ul>
 					<profile-selection ng-show="gc.activeT(1)"></profile-selection>
 					<upload-area	ng-show="gc.activeT(2)"></upload-area>
 					<end-point	ng-show="gc.activeT(3)"></end-point>
+					<quick-testing	ng-show="gc.activeT(4)"></quick-testing>
 	  			</section>
 	    		<message-area ng-show="gc.isSelected(2) && !gc.isLoading()"></message-area>
 	    		<response-area ng-show="gc.isSelected(3) && !gc.isLoading()"></response-area>

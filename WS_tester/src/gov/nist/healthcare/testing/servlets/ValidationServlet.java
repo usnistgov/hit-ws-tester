@@ -83,6 +83,16 @@ public class ValidationServlet extends HttpServlet {
 			vo.setValidationContext(context);
 		}
 		
+		if(request.getParameter("dqa").equals("true")){
+			vo.setDQA(true);
+			vo.setDQAFilter(request.getParameter("dqaFilters"));
+		}
+		else {
+			vo.setDQA(false);
+			vo.setDQAFilter("");
+		}
+		
+		
 		vo.setReady(true);
 		try {
 			Timer.start();
@@ -102,7 +112,9 @@ public class ValidationServlet extends HttpServlet {
 						String result = os.toString();
 						result = result.replaceAll("<br>", " ");
 						System.out.println(vo.getResponse());
-						result = EnhancedReport.from("xml",vo.getResponse()).render("iz-report", null);
+						JSONObject oiz = new JSONObject();
+						oiz.put("excluded", "affirmative");
+						result = EnhancedReport.from("xml",vo.getResponse()).render("iz-report", oiz);
 						JSONObject o = new JSONObject();
 						o.put("type", "old");
 						o.put("content", result);
@@ -135,6 +147,7 @@ public class ValidationServlet extends HttpServlet {
 				session.setAttribute("VO", new ValidationObject());
 		}
 		catch(Exception e){
+			System.out.println("ERROR");
 			e.printStackTrace();
 			response.setStatus(500);
 		}

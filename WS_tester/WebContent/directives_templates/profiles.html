@@ -35,6 +35,55 @@
 							</a>
 					</div>
 		</div>
+		<div class="form-group col-md-12" ng-show="profile.step() > 2 && profile.dqa">
+			<label class="control-label col-md-2 col-md-offset-1" for="tables">DQA</label>	
+			<button ng-click="profile.openDQA()" class="col-md-4 col-md-offset-1 btn btn-warning">
+				Choose DQA Issues
+				<span class="badge">{{profile.nbFilters()}}</span>
+			</button>
+		    <script type="text/ng-template" id="myModalContent.html">
+        		<div class="modal-header col-md-12">
+            		<h3 class="modal-title col-md-5">{{ctrl.title}}</h3>
+					<span class="col-md-offset-4 col-md-2"> Selected </span>
+					<span class="badge col-md-1">{{ctrl.nbFilters()}}</span>
+       			</div>
+        		<div class="modal-body col-md-12">
+        			<div class="hlimit">
+	        			<div class="col-md-8 col-md-offset-4">
+							<input id="code" name="code" ng-model="search.code" placeholder="Code" class="col-md-4" type="text" />
+	            			<input id="desc" name="desc" ng-model="search.desc" placeholder="Description" class="col-md-8" type="text" />
+						</div>
+						<table class="table table-condensed table-striped">
+							<caption>DQA Errors</caption>
+							<tr>
+								<th> Code </th>
+								<th> Issue </th>
+							</tr>
+							<tr ng-repeat="item in ctrl.dqaOptions.errors | filter:search" ng-class="{success : ctrl.isSelected(item)}">
+								<td><button class="btn btn-default" ng-class="{active : ctrl.isSelected(item)}" ng-click="ctrl.toggle(item)">{{item.code}}</button></td>
+								<td>{{item.desc}}</td>
+							</tr>
+						</table>
+						<table class="table table-condensed table-striped">
+							<caption>DQA Warnings</caption>
+							<tr>
+								<th>Code</th>
+								<th> Issue </th>
+							</tr>
+							<tr ng-repeat="item in ctrl.dqaOptions.warnings | filter:search" ng-class="{success : ctrl.isSelected(item)}">
+								<td><button class="btn btn-default" ng-class="{active : ctrl.isSelected(item)}" ng-click="ctrl.toggle(item)">{{item.code}}</button></td>
+								<td>{{item.desc}}</td>
+							</tr>
+						</table>
+	        		</div>
+        		</div>
+        		<div class="modal-footer">
+					<button class="btn btn-primary col-md-6" type="button" ng-click="ctrl.ok()">OK</button>
+            		<button class="btn btn-success col-md-2" type="button" ng-click="ctrl.selectAll()">Select All</button>
+					<button class="btn btn-danger col-md-2" type="button" ng-click="ctrl.clearAll()">Clear All</button>
+				</div>
+    		</script>
+		</div>
 		<div class="form-group col-md-12" ng-show="profile.step() > 2 && profile.needed">
 					<label class="control-label col-md-2 col-md-offset-1" for="tables">Tables <a href="#" tooltips tooltip-size="small" tooltip-title="Information" tooltip-side="bottom"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></label>
 					

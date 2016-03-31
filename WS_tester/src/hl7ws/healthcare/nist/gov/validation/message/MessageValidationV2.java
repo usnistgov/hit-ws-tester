@@ -32,7 +32,7 @@ public class MessageValidationV2 extends Service {
     static {
         URL url = null;
         try {
-            url = new URL("http://hl7v2.ws.nist.gov/hl7v2ws/services/soap/MessageValidationV2?wsdl");
+            url = new URL("http://hl7v2.ws.nist.gov/hl7v2ws//services/soap/MessageValidationV2?wsdl");
         } catch (MalformedURLException e) {
             java.util.logging.Logger.getLogger(MessageValidationV2.class.getName())
                 .log(java.util.logging.Level.INFO, 

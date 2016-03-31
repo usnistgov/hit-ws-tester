@@ -21,6 +21,11 @@ body {
 border: 2px dashed #000000;
 }
 
+.hlimit {
+	max-height : 700px !important;
+	overflow: scroll;
+}
+
 .container2 {
 	margin-top : 20px;
 	padding-top : 20px;

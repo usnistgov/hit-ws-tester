@@ -6,47 +6,62 @@
 				{
 					"name" : "VXU 1.4",
 					"OID"  : "2.16.840.1.113883.3.72.2.2.99001",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "allow"
 				},
 				{
 					"name" : "Z22",
 					"OID"  : "2.16.840.1.113883.3.72.2.3.99001",
-					"params" : "not needed"
+					"params" : "not needed",
+					"dqa" : "allow"
 				},
 				{
 					"name" : "Z23",
 					"OID"  : "2.16.840.1.113883.3.72.2.3.99002",
-					"params" : "not needed"
+					"params" : "not needed",
+					"dqa" : "deny"
+				},
+				{
+					"name" : "Z23A",
+					"OID"  : "2.16.840.1.113883.3.72.2.3.99009",
+					"params" : "not needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "Z31",
 					"OID"  : "2.16.840.1.113883.3.72.2.3.99003",
-					"params" : "not needed"
+					"params" : "not needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "Z32",
 					"OID"  : "2.16.840.1.113883.3.72.2.3.99004",
-					"params" : "not needed"
+					"params" : "not needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "Z33",
 					"OID"  : "2.16.840.1.113883.3.72.2.3.99005",
-					"params" : "not needed"
+					"params" : "not needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "Z34",
 					"OID"  : "2.16.840.1.113883.3.72.2.3.99006",
-					"params" : "not needed"
+					"params" : "not needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "Z42",
 					"OID"  : "2.16.840.1.113883.3.72.2.3.99007",
-					"params" : "not needed"
+					"params" : "not needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "Z44",
 					"OID"  : "2.16.840.1.113883.3.72.2.3.99008",
-					"params" : "not needed"
+					"params" : "not needed",
+					"dqa" : "deny"
 				}
 			],
 			"tables" : [
@@ -70,22 +85,26 @@
 				{
 					"name" : "GU_RU",
 					"OID"  : "2.16.840.1.113883.9.17",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "GU_RN",
 					"OID"  : "2.16.840.1.113883.9.18",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "NG_RU",
 					"OID"  : "2.16.840.1.113883.9.19",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "NG_RN",
 					"OID"  : "2.16.840.1.113883.9.20",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "deny"
 				}
 			],
 			"tables" : [
@@ -117,22 +136,26 @@
 				{
 					"name" : "ADT_A01",
 					"OID"  : "2.16.840.1.113883.3.72.2.2.99002",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "ADT_A03",
 					"OID"  : "2.16.840.1.113883.3.72.2.2.99003",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "ADT_A04",
 					"OID"  : "2.16.840.1.113883.3.72.2.2.99004",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "deny"
 				},
 				{
 					"name" : "ADT_A08",
 					"OID"  : "2.16.840.1.113883.3.72.2.2.99005",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "deny"
 				}
 			],
 			"tables" : [
@@ -168,7 +191,8 @@
 				{
 					"name" : "Profile",
 					"OID"  : "2.16.840.1.113883.9.11",
-					"params" : "needed"
+					"params" : "needed",
+					"dqa" : "deny"
 				}
 			],
 			"tables" : [

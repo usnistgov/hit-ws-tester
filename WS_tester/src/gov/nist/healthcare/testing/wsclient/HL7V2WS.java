@@ -37,11 +37,19 @@ public class HL7V2WS {
 	
 	public boolean validate(ValidationObject vo){
 		if(vo.isReady()){
-			String response = port.validate(vo.getMessage(), vo.getProfilOID(), vo.getTablesOID(), vo.getValidationContext());
 			System.out.println("NEW Validation :");
 			System.out.println("Profile : "+vo.getProfilOID());
 			System.out.println("Tables  : "+vo.getTablesOID());
 			System.out.println("Context : "+vo.getValidationContext());
+			System.out.println("Message : "+vo.getMessage());
+			System.out.println("DQA 	: "+vo.isDQA());
+			System.out.println("DQAf 	: "+vo.getDQAFilter());
+			String response = "";
+			if(!vo.isDQA())
+				response = port.validate(vo.getMessage(), vo.getProfilOID(), vo.getTablesOID(), vo.getValidationContext());
+			else
+				response = port.validateDQA(vo.getMessage(), vo.getProfilOID(), vo.getTablesOID(), vo.getValidationContext(), vo.getDQAFilter());
+
 			if(response != null && !response.equals("")){
 				vo.setResponse(response);
 				return true;

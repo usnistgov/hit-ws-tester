@@ -6,6 +6,8 @@ public class ValidationObject {
 	private String validationContext;
 	private String message;
 	private String response;
+	private boolean DQA;
+	private String DQAFilter;
 	private boolean ready;
 	
 	public boolean isReady() {
@@ -44,4 +46,17 @@ public class ValidationObject {
 	public void setResponse(String response) {
 		this.response = response;
 	}
+	public boolean isDQA() {
+		return DQA;
+	}
+	public void setDQA(boolean dQA) {
+		DQA = dQA;
+	}
+	public String getDQAFilter() {
+		return DQAFilter;
+	}
+	public void setDQAFilter(String dQAFilter) {
+		DQAFilter = dQAFilter;
+	}
+	
 }

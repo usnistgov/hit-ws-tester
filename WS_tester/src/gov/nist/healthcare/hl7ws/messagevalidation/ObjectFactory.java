@@ -29,6 +29,8 @@ public class ObjectFactory {
     private final static QName _LoadResource_QNAME = new QName("http://messagevalidation.hl7ws.healthcare.nist.gov/", "loadResource");
     private final static QName _LoadResourceResponse_QNAME = new QName("http://messagevalidation.hl7ws.healthcare.nist.gov/", "loadResourceResponse");
     private final static QName _Validate_QNAME = new QName("http://messagevalidation.hl7ws.healthcare.nist.gov/", "validate");
+    private final static QName _ValidateDQA_QNAME = new QName("http://messagevalidation.hl7ws.healthcare.nist.gov/", "validateDQA");
+    private final static QName _ValidateDQAResponse_QNAME = new QName("http://messagevalidation.hl7ws.healthcare.nist.gov/", "validateDQAResponse");
     private final static QName _ValidateResponse_QNAME = new QName("http://messagevalidation.hl7ws.healthcare.nist.gov/", "validateResponse");
 
     /**
@@ -76,6 +78,22 @@ public class ObjectFactory {
      */
     public Validate createValidate() {
         return new Validate();
+    }
+
+    /**
+     * Create an instance of {@link ValidateDQA }
+     * 
+     */
+    public ValidateDQA createValidateDQA() {
+        return new ValidateDQA();
+    }
+
+    /**
+     * Create an instance of {@link ValidateDQAResponse }
+     * 
+     */
+    public ValidateDQAResponse createValidateDQAResponse() {
+        return new ValidateDQAResponse();
     }
 
     /**
@@ -129,6 +147,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://messagevalidation.hl7ws.healthcare.nist.gov/", name = "validate")
     public JAXBElement<Validate> createValidate(Validate value) {
         return new JAXBElement<Validate>(_Validate_QNAME, Validate.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidateDQA }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://messagevalidation.hl7ws.healthcare.nist.gov/", name = "validateDQA")
+    public JAXBElement<ValidateDQA> createValidateDQA(ValidateDQA value) {
+        return new JAXBElement<ValidateDQA>(_ValidateDQA_QNAME, ValidateDQA.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidateDQAResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://messagevalidation.hl7ws.healthcare.nist.gov/", name = "validateDQAResponse")
+    public JAXBElement<ValidateDQAResponse> createValidateDQAResponse(ValidateDQAResponse value) {
+        return new JAXBElement<ValidateDQAResponse>(_ValidateDQAResponse_QNAME, ValidateDQAResponse.class, null, value);
     }
 
     /**

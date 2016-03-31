@@ -1,0 +1,25 @@
+<section class="container1">
+	<section ng-hide="msg.isBatch">
+		<form class="form">
+			<fieldset>
+				<div class="form-group col-md-12">
+					<label class="control-label col-md-1 col-md-offset-1">OID</label>
+					<div class="col-md-8 col-md-offset-1">
+						<input ng-model="q.oid" class="form-control" type="text" />
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<label class="control-label col-md-1 col-md-offset-1">Message</label>
+					<div class="controls">
+						<textarea class="col-md-8 col-md-offset-1" type="text"
+							ng-model="q.content" style="min-height: 300px;">
+						</textarea>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+</section>
+<button ng-show="q.showValidate()" ng-click="q.validate()"
+	class="btn btn-warning pull-right col-md-3" style="margin-top: 10px;">
+	Validate</button>

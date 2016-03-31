@@ -83,6 +83,15 @@ public class BatchHandler {
 				configO.setValidationContext(context);
 			}
 			
+			if(params.get("dqa").equals("true")){
+				configO.setDQA(true);
+				configO.setDQAFilter(params.get("dqaFilters"));
+			}
+			else {
+				configO.setDQA(false);
+				configO.setDQAFilter("");
+			}
+			
 			configO.setReady(true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
