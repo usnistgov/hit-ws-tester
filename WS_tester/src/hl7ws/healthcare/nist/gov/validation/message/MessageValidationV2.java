@@ -45,17 +45,9 @@ public class MessageValidationV2 extends Service {
         super(wsdlLocation, SERVICE);
     }
 
-    public MessageValidationV2(URL wsdlLocation, QName serviceName) {
+    public MessageValidationV2(URL wsdlLocation, QName serviceName, String endpoint) {
         super(wsdlLocation, serviceName);
-        this.endpoint = MessageValidationV2.DEFAULT_ENDPOINT;
-    }
-    
-    public MessageValidationV2(URL wsdlLocation, QName serviceName,String endpoint) {
-        super(wsdlLocation, serviceName);
-        if(endpoint.equals(""))
-        	this.endpoint = MessageValidationV2.DEFAULT_ENDPOINT;
-        else
-        	this.endpoint = endpoint;
+        this.endpoint = endpoint;
     }
 
     public MessageValidationV2() {

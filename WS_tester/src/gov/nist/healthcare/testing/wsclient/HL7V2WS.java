@@ -1,5 +1,6 @@
 package gov.nist.healthcare.testing.wsclient;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.xml.namespace.QName;
@@ -20,18 +21,17 @@ public class HL7V2WS {
 	private HL7V2WS(){
 		URL wsdlURL = MessageValidationV2.WSDL_LOCATION;
 		QName SERVICE_NAME = new QName("http://gov.nist.healthcare.hl7ws/validation/message", "MessageValidationV2");
-		ws = new MessageValidationV2(wsdlURL, SERVICE_NAME);
+		ws = new MessageValidationV2(wsdlURL, SERVICE_NAME, MessageValidationV2.DEFAULT_ENDPOINT);
 		port = ws.getMessageValidationV2ServicePort();  
 	}
 	
-	private HL7V2WS(String endpoint){
-		URL wsdlURL = MessageValidationV2.WSDL_LOCATION;
+	private HL7V2WS(String endpoint) throws MalformedURLException {
 		QName SERVICE_NAME = new QName("http://gov.nist.healthcare.hl7ws/validation/message", "MessageValidationV2");
-		ws = new MessageValidationV2(wsdlURL, SERVICE_NAME,endpoint);
+		ws = new MessageValidationV2(endpoint.equals("") ? MessageValidationV2.WSDL_LOCATION : new URL(endpoint), SERVICE_NAME, endpoint);
 		port = ws.getMessageValidationV2ServicePort();  
 	}
 	
-	public static HL7V2WS getInstance(String endp){
+	public static HL7V2WS getInstance(String endp) throws MalformedURLException {
 		return new HL7V2WS(endp);
 	}
 	
